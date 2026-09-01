@@ -1,13 +1,15 @@
-[사용 방법]
-1. 이 폴더 전체를 GitHub 저장소에 업로드합니다.
-2. GitHub Pages를 활성화합니다.
-3. index.html이 있는 주소로 접속하면 E-Book이 열립니다.
+2027 창녕옥야고 신입학 가이드북 E-book
 
-[구성]
-- index.html : E-Book 웹페이지
-- 2027_okya_guidebook.pdf : 원본 PDF 다운로드용
-- pages/ : PDF 각 페이지 이미지
+GitHub Pages 업로드 방법
+1. ZIP 파일의 압축을 풉니다.
+2. 풀린 폴더 '안의 내용' 전체를 GitHub 저장소 최상위에 업로드합니다.
+3. 저장소에서 Settings > Pages > Deploy from a branch > main > /(root)를 선택합니다.
 
-[교체 방법]
-다른 PDF로 바꿀 때는 PDF 페이지를 JPG로 변환해 pages/page-1.jpg, page-2.jpg ... 형식으로 넣고,
-index.html의 TOTAL 숫자만 전체 페이지 수에 맞게 수정하면 됩니다.
+폴더 구조
+- index.html
+- style.css
+- app.js
+- 2027-okya-admission-guidebook.pdf (웹 다운로드용 최적화 PDF)
+- pages/page-001.webp ~ page-096.webp
+
+모든 경로는 상대경로이며 별도 서버 코드나 외부 라이브러리가 필요하지 않습니다.

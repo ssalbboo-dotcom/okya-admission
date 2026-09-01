@@ -1,156 +1,47 @@
 <!doctype html>
 <html lang="ko">
 <head>
-  <meta charset="utf-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
-  <meta name="theme-color" content="#173f67" />
-  <title>2027 창녕옥야고등학교 신입학 가이드북</title>
-  <style>
-    :root{
-      --bg:#eef3f8; --navy:#173f67; --ink:#17202a; --muted:#64748b;
-      --paper:#fff; --line:#d9e2ec; --shadow:0 18px 50px rgba(20,43,70,.18);
-    }
-    *{box-sizing:border-box}
-    html,body{height:100%;margin:0}
-    body{font-family:system-ui,-apple-system,"Noto Sans KR","Malgun Gothic",sans-serif;background:linear-gradient(180deg,#f8fafc,#e8eef5);color:var(--ink);overflow:hidden}
-    .app{height:100%;display:grid;grid-template-rows:auto 1fr auto}
-    header{display:flex;align-items:center;gap:14px;padding:13px 18px;background:rgba(255,255,255,.92);backdrop-filter:blur(12px);border-bottom:1px solid var(--line);z-index:10}
-    .brand{min-width:0;flex:1}
-    .title{font-size:17px;font-weight:800;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
-    .sub{font-size:12px;color:var(--muted);margin-top:2px}
-    .btn{border:1px solid #cbd5e1;background:#fff;color:#243447;border-radius:10px;padding:9px 12px;font-weight:700;cursor:pointer;text-decoration:none;display:inline-flex;align-items:center;gap:6px;font-size:13px}
-    .btn:hover{background:#f8fafc}
-    .btn.primary{background:var(--navy);color:#fff;border-color:var(--navy)}
-
-    main{position:relative;display:flex;align-items:center;justify-content:center;min-height:0;padding:18px 68px 14px}
-    .stage{height:100%;width:100%;display:flex;align-items:center;justify-content:center;perspective:2200px;touch-action:pan-y}
-    .book{display:flex;align-items:center;justify-content:center;gap:2px;max-width:100%;max-height:100%;filter:drop-shadow(0 14px 25px rgba(15,23,42,.18))}
-    .page{position:relative;background:var(--paper);overflow:hidden;transition:transform .42s cubic-bezier(.2,.75,.25,1),opacity .28s ease;box-shadow:inset 0 0 0 1px rgba(15,23,42,.06)}
-    .page img{display:block;height:100%;width:100%;object-fit:contain;background:#fff;user-select:none;-webkit-user-drag:none}
-    .page.left{transform-origin:right center;border-radius:8px 0 0 8px}
-    .page.right{transform-origin:left center;border-radius:0 8px 8px 0}
-    .page.single{border-radius:8px}
-    .book.turn-next .page.right{transform:rotateY(-10deg) translateX(-8px);opacity:.72}
-    .book.turn-prev .page.left{transform:rotateY(10deg) translateX(8px);opacity:.72}
-
-    .nav{position:absolute;top:50%;transform:translateY(-50%);width:46px;height:72px;border:0;border-radius:14px;background:rgba(23,63,103,.92);color:#fff;font-size:30px;cursor:pointer;display:grid;place-items:center;box-shadow:0 10px 25px rgba(23,63,103,.22);z-index:5}
-    .nav:hover{background:#0f3152}.nav:disabled{opacity:.25;cursor:default}
-    #prev{left:14px} #next{right:14px}
-
-    footer{display:grid;grid-template-columns:1fr auto 1fr;align-items:center;gap:12px;padding:10px 18px 14px}
-    .hint{font-size:12px;color:var(--muted)}
-    .counter{font-weight:800;font-variant-numeric:tabular-nums;color:#334155}
-    .progress{justify-self:end;width:min(220px,28vw);height:6px;background:#dbe5ef;border-radius:999px;overflow:hidden}
-    .progress span{display:block;height:100%;background:var(--navy);width:0%;transition:width .25s}
-
-    @media (max-width:760px){
-      header{padding:10px 12px}.sub{display:none}.title{font-size:15px}
-      .btn span.label{display:none}.btn{padding:8px 10px}
-      main{padding:10px 48px 8px}.nav{width:36px;height:58px;font-size:24px;border-radius:11px}#prev{left:6px}#next{right:6px}
-      footer{padding:8px 12px 10px;grid-template-columns:1fr auto}.hint{display:none}.progress{width:130px}
-      .book{gap:0}
-    }
-    @media print{header,footer,.nav{display:none!important}body{overflow:visible;background:#fff}.app{display:block}.stage{display:block}.book{display:block;filter:none}.page{width:100%!important;height:auto!important;page-break-after:always}.page img{width:100%;height:auto}}
-  </style>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+  <meta name="theme-color" content="#142b43">
+  <meta name="description" content="2027학년도 창녕옥야고등학교 신입학 가이드북">
+  <title>2027 창녕옥야고 신입학 가이드북</title>
+  <link rel="stylesheet" href="./style.css">
 </head>
 <body>
-<div class="app">
-  <header>
-    <div class="brand">
-      <div class="title">2027 창녕옥야고등학교 신입학 가이드북</div>
-      <div class="sub">웹 E-Book</div>
+  <header class="topbar">
+    <div class="title-wrap">
+      <span class="eyebrow">CHANGNYEONG OKYA HIGH SCHOOL</span>
+      <h1>2027 신입학 가이드북</h1>
     </div>
-    <button class="btn" id="fullscreen" title="전체 화면">⛶ <span class="label">전체화면</span></button>
-    <a class="btn primary" href="2027_okya_guidebook.pdf" download>↓ <span class="label">PDF 다운로드</span></a>
+    <div class="header-actions">
+      <button id="zoomOut" type="button" aria-label="축소">−</button>
+      <span id="zoomLabel" aria-live="polite">100%</span>
+      <button id="zoomIn" type="button" aria-label="확대">+</button>
+      <button id="fullscreen" type="button" aria-label="전체화면">⛶ <span>전체화면</span></button>
+      <a class="download" href="./2027-okya-admission-guidebook.pdf" download>PDF 다운로드</a>
+    </div>
   </header>
 
   <main>
-    <button class="nav" id="prev" aria-label="이전 페이지">‹</button>
-    <div class="stage" id="stage">
-      <div class="book" id="book" aria-live="polite"></div>
+    <div id="reader" class="reader" aria-label="전자책 뷰어">
+      <button id="prev" class="nav prev" type="button" aria-label="이전 페이지">‹</button>
+      <div id="viewport" class="viewport">
+        <div id="book" class="book" aria-live="polite"></div>
+      </div>
+      <button id="next" class="nav next" type="button" aria-label="다음 페이지">›</button>
     </div>
-    <button class="nav" id="next" aria-label="다음 페이지">›</button>
   </main>
 
-  <footer>
-    <div class="hint">← → 키 또는 화면 좌우 스와이프로 넘길 수 있습니다.</div>
-    <div class="counter" id="counter">1 / 5</div>
-    <div class="progress"><span id="bar"></span></div>
+  <footer class="controls">
+    <span id="pageStatus">1 / 96</span>
+    <label>페이지
+      <input id="pageInput" type="number" min="1" max="96" value="1" inputmode="numeric" aria-label="이동할 페이지">
+    </label>
+    <button id="goPage" type="button">이동</button>
+    <span class="hint">키보드 ← → · 화면 스와이프</span>
   </footer>
-</div>
-
-<script>
-(() => {
-  const TOTAL = 5;
-  const images = Array.from({length:TOTAL},(_,i)=>`pages/page-${i+1}.jpg`);
-  const book = document.getElementById('book');
-  const stage = document.getElementById('stage');
-  const prev = document.getElementById('prev');
-  const next = document.getElementById('next');
-  const counter = document.getElementById('counter');
-  const bar = document.getElementById('bar');
-  let current = 1;
-  let startX = 0;
-
-  images.forEach(src => { const im = new Image(); im.src = src; });
-
-  function mobile(){ return matchMedia('(max-width:760px)').matches; }
-  function spreadStart(page){
-    if (mobile() || page === 1) return page;
-    return page % 2 === 0 ? page : page - 1;
-  }
-  function visiblePages(){
-    if (mobile() || current === 1) return [current];
-    const s = spreadStart(current); return [s, Math.min(s+1,TOTAL)].filter((v,i,a)=>a.indexOf(v)===i);
-  }
-  function fit(pages){
-    const imgRatio = 827/1169; // source page aspect ratio
-    const maxH = stage.clientHeight;
-    const maxW = stage.clientWidth;
-    const n = pages.length;
-    let h = maxH;
-    let w = h * imgRatio;
-    if (w*n > maxW){ w = maxW/n; h = w/imgRatio; }
-    return {w:Math.floor(w),h:Math.floor(h)};
-  }
-  function render(direction){
-    const pages = visiblePages();
-    const size = fit(pages);
-    if(direction){
-      book.classList.add(direction === 'next' ? 'turn-next':'turn-prev');
-      setTimeout(()=>book.classList.remove('turn-next','turn-prev'),220);
-    }
-    book.innerHTML='';
-    pages.forEach((p,idx)=>{
-      const el=document.createElement('div');
-      el.className='page ' + (pages.length===1?'single':(idx===0?'left':'right'));
-      el.style.width=size.w+'px'; el.style.height=size.h+'px';
-      const img=document.createElement('img'); img.src=images[p-1]; img.alt=`${p}페이지`;
-      el.appendChild(img); book.appendChild(el);
-    });
-    const shown = pages.length===1 ? `${pages[0]}` : `${pages[0]}–${pages[pages.length-1]}`;
-    counter.textContent=`${shown} / ${TOTAL}`;
-    bar.style.width=(Math.max(...pages)/TOTAL*100)+'%';
-    prev.disabled=current<=1; next.disabled=Math.max(...pages)>=TOTAL;
-  }
-  function goNext(){
-    const pages=visiblePages(); if(Math.max(...pages)>=TOTAL)return;
-    current = mobile() ? current+1 : (current===1 ? 2 : Math.min(TOTAL,current+2));
-    render('next');
-  }
-  function goPrev(){
-    if(current<=1)return;
-    current = mobile() ? current-1 : (current<=2 ? 1 : Math.max(2,current-2));
-    render('prev');
-  }
-  next.addEventListener('click',goNext); prev.addEventListener('click',goPrev);
-  addEventListener('keydown',e=>{ if(e.key==='ArrowRight'||e.key==='PageDown')goNext(); if(e.key==='ArrowLeft'||e.key==='PageUp')goPrev(); });
-  stage.addEventListener('touchstart',e=>{startX=e.changedTouches[0].clientX},{passive:true});
-  stage.addEventListener('touchend',e=>{const dx=e.changedTouches[0].clientX-startX;if(Math.abs(dx)>45)(dx<0?goNext():goPrev());},{passive:true});
-  document.getElementById('fullscreen').onclick=()=>{ if(!document.fullscreenElement) document.documentElement.requestFullscreen?.(); else document.exitFullscreen?.(); };
-  addEventListener('resize',()=>render());
-  render();
-})();
-</script>
+  <noscript>이 E-book을 보려면 JavaScript를 활성화해 주세요.</noscript>
+  <script src="./app.js"></script>
 </body>
 </html>
